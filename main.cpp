@@ -16,7 +16,7 @@ void randomizeMatrix(int** matrix, int size) {
 }
 
 int main() {
-    int size = 1000;
+    int size = 1500;
     auto a = new int*[size];
     auto b = new int*[size];
     auto result = new int*[size];
@@ -29,7 +29,9 @@ int main() {
     randomizeMatrix(a, size);
     randomizeMatrix(b, size);
 
-    for (int threads = 1; threads <= 4; ++threads) {
+    int max_threads = omp_get_max_threads();
+
+    for (int threads = 1; threads <= max_threads; ++threads) {
         omp_set_num_threads(threads);
 
         auto start = std::chrono::high_resolution_clock::now();
