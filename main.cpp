@@ -3,7 +3,7 @@
 #include <chrono>
 #include "omp.h"
 
-void randomizeMatrix(int** matrix, int size) {
+void randomize_matrix(int** matrix, int size) {
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> gen(1, 100);
@@ -26,8 +26,8 @@ int main() {
         result[i] = new int[size];
     }
 
-    randomizeMatrix(a, size);
-    randomizeMatrix(b, size);
+    randomize_matrix(a, size);
+    randomize_matrix(b, size);
 
     int max_threads = omp_get_max_threads();
 
